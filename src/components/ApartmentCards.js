@@ -1,16 +1,18 @@
 import React from 'react';
 import { Card } from 'antd';
+import Tenant from './Tenant';
 
-const ApartmentCard: React.FC = ({name, location, key}) => (
+
+const ApartmentCard: React.FC = ({name, location, key, tenant, clicked, setClicked }) => 
+
+(
   <Card title="Apartments">
-    <Card type="inner" key={key} title={name} extra={<a href='/tenant'  >More</a >}>
-      {location}
-    </Card>
+    <button onClick={ ()=> setClicked(!clicked)} >Veiw tenants</button>
     <Card
       style={{ marginTop: 16 }}
       type="inner"
       title={name}
-      extra={<a href='/tenant' >More</a >}
+      extra={clicked? <Tenant tenant={tenant}/> : "open" }
       key={key}
     >
       {location}

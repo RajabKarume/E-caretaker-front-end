@@ -38,7 +38,6 @@ const Login: React.FC = () => {
     }).then((r)=>r.json())
     .then((user)=> setApartment(user.apartments))
     setLogin(true)
-
     setLoading(false)
   
 
@@ -50,11 +49,14 @@ const Login: React.FC = () => {
         r.json()
         .then((user)=> setUser(user))
         setLogin(true)
-        
+      }else{
+        <h1>wrong password or username</h1>
       }
     })
   },[])
   console.log(user)
+  // console.log(tenant)
+
   
 //   function handleClick(){
 //       fetch(`${api}/tenants`)
@@ -84,7 +86,6 @@ const Login: React.FC = () => {
   //   noOfBedrooms={myTenant.number_of_bedrooms}
   //   rent={myTenant.rent}
   //   status={myTenant.is_paid} />
-  
   
 
   const tableStyle={

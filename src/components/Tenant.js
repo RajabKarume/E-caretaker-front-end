@@ -1,16 +1,17 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
+import AddTenant from "./AddTenant";
 // import Display from "./Display";
 
-export default function Tenant({name, email, phoneNo, houseNo, noOfBedrooms, rent, status, key}){
+export default function Tenant({tenant}){
 
-    const[tenant, setTenant] = useState([])
+    // const[tenant, setTenant] = useState([])
 
-    useEffect(()=>{
-        fetch('http://127.0.0.1:3000/tenants')
-        .then((r)=>r.json())
-        .then((data)=> setTenant(data))
-      },[])
-      console.log(tenant)
+    // useEffect(()=>{
+    //     fetch('http://127.0.0.1:3000/tenants')
+    //     .then((r)=>r.json())
+    //     .then((data)=> setTenant(data))
+    //   },[])
+    //   console.log(tenant)
     const tableStyle={
         border: "10px solid #ddd",
         padding: "8px",
@@ -27,6 +28,8 @@ export default function Tenant({name, email, phoneNo, houseNo, noOfBedrooms, ren
     }
     return(
         <div style={{paddingTop:"50px"}} className="table" >
+            
+            <AddTenant />
         <table style={tableStyle} class="table table-success table-striped">
             <thead>
                 <tr style={thStyle} >
@@ -49,7 +52,7 @@ export default function Tenant({name, email, phoneNo, houseNo, noOfBedrooms, ren
                         <td>{tnt.house_number}</td>
                         <td>{tnt.number_of_bedrooms}</td>
                         <td>{tnt.rent}</td>
-                        <td>{tnt.is_paid.toString()}</td>
+                        <td>{tnt.is_paid? "paid" : "not paid"}</td>
                     </tr>
                     ))}
             </tbody>
