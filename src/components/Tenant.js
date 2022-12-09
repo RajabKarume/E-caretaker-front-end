@@ -26,7 +26,7 @@ export default function Tenant({tenant}){
         backgroundColor: "#04AA6D",
         color: "white",
         paddingLeft: "2000px",
-        fontSize: "25px"
+        fontSize: "15px"
     }
 
 
@@ -58,7 +58,7 @@ export default function Tenant({tenant}){
             <tbody>
                 {tenant.map((tnt)=>(
                     
-                    <tr key={tnt.id} style={{fontSize: "15px"}} >
+                    <tr key={tnt.id} style={{fontSize: "12px"}} >
                         <button onClick={handleClick} >DELETE</button>
                         <td>{tnt.name}</td>
                         <td>{tnt.email}</td>
