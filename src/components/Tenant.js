@@ -58,7 +58,7 @@ export default function Tenant({tenant}){
             <tbody>
                 {tenant.map((tnt)=>(
                     
-                    <tr key={tnt.id} style={{fontSize: "25px"}} >
+                    <tr key={tnt.id} style={{fontSize: "15px"}} >
                         <button onClick={handleClick} >DELETE</button>
                         <td>{tnt.name}</td>
                         <td>{tnt.email}</td>
