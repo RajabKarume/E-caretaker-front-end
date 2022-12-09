@@ -8,6 +8,7 @@ import Apartments from './components/Apartment';
 // import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Tenant from './components/Tenant';
 import Logout from './components/LogOut';
+import SignUp from './components/SignUp';
 
 
 function App() {
@@ -18,6 +19,7 @@ function App() {
     <div className="App">
      <BrowserRouter>
      <Logout login={login} setLogin={setLogin} />
+     < SignUp setLogin={setLogin} />
       <Routes>
         <Route path='/' element={<LogIn login={login} setLogin={setLogin} />} />
         <Route path='/tenant' element={<Tenant />} />

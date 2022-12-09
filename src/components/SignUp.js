@@ -1,10 +1,13 @@
 import React, { useState } from 'react';
 import { PlusOutlined } from '@ant-design/icons';
 import { Button, Col, Drawer, Form, Input, Row, Space } from 'antd';
+// import Password from 'antd/es/input/Password';
 
 
-const SignUp: React.FC = () => {
+const SignUp: React.FC = ({setLogin}) => {
   const [open, setOpen] = useState(false);
+  const [username, setUsername] = useState("")
+  const [password, setPassword] = useState("")
 
   const showDrawer = () => {
     setOpen(true);
@@ -13,7 +16,29 @@ const SignUp: React.FC = () => {
   const onClose = () => {
     setOpen(false);
   };
+function handleSubmit(e){
+  e.preventDefault()
+  const data = {
+    username:`${username}`,
+    password:`${password}`
+  }
 
+
+  fetch(`http://127.0.0.1:3000/signup`,{
+    method: 'POST',
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(data),
+  }).then ((r)=>{
+    if (r.ok){
+      r.json()
+      .then((user)=> console.log(user))
+      setLogin(true)
+    }
+  })
+}
   return (
     <>
       <Button type="primary" onClick={showDrawer} icon={<PlusOutlined />}>
@@ -28,7 +53,7 @@ const SignUp: React.FC = () => {
         extra={
           <Space>
             <Button onClick={onClose}>Cancel</Button>
-            <Button onClick={onClose} type="primary">
+            <Button onClick={handleSubmit} type="primary">
               Submit
             </Button>
           </Space>
@@ -38,10 +63,10 @@ const SignUp: React.FC = () => {
           <Row gutter={16}>
             <Col span={12}>
               <Form.Item
-                label="Name"
+                label="username"
                 rules={[{ required: true, message: 'Please enter username' }]}
               >
-                <Input placeholder="Please enter username" />
+                <Input placeholder="Please enter username" value={username} onChange={(e)=> setUsername(e.target.value)} />
               </Form.Item>
             </Col>
             <Col span={12}>
@@ -55,6 +80,8 @@ const SignUp: React.FC = () => {
                   style={{ width: '100%' }}
                   placeholder="Please enter Password"
                   type= "password"
+                  value={password} 
+                  onChange={(e)=> setPassword(e.target.value)}
 
                 />
               </Form.Item>
