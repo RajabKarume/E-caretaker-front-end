@@ -15,7 +15,7 @@ export default function Apartments({apartment, handleClick}){
         <div>
             <h1>Apartment</h1>
         {apartment.map((apt)=>(
-            < ApartmentCard tenant={apt.tenants} name={apt.name} location={apt.location} key={apt.id} clicked={clicked} setClicked={setClicked} />
+            < ApartmentCard key={apt.id} tenant={apt.tenants} name={apt.name} location={apt.location} id={apt.id} clicked={clicked} setClicked={setClicked} />
             ))}
 
         </div>

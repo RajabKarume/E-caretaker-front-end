@@ -1,6 +1,7 @@
 import React from "react";
 // import {NavLink} from "react-router-dom"
 import Login from "./LogIn";
+import Logout from "./LogOut";
 
 function NavBar(){
   
@@ -13,6 +14,7 @@ function NavBar(){
     <div className="collapse navbar-collapse" id="navbarNav" >
       <ul className="navbar-nav">
         <li className="nav-item">
+          <Logout />
           {/* <NavLink className="nav-link active" aria-current="page" to="/">Home</NavLink> */}
         </li>
         {/* <li className="nav-item">

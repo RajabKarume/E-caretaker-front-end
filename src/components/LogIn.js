@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { Button, Checkbox, Form, Input } from 'antd';
 import Apartments from './Apartment';
-// import Tenant from "./Tenant"
 
-const Login: React.FC = () => {
+
+const Login: React.FC = ({login, setLogin}) => {
   const onFinish = (values: any) => {
     console.log('Success:', values);
   };
@@ -12,15 +12,13 @@ const Login: React.FC = () => {
   const [password, setPassword] = useState("")
   const [loading, setLoading] = useState(false)
   const [apartment, setApartment] = useState([])
-  // const [tenant, setTenant] = useState([])
-  // const [click, setClick] = useState(false)
-  // const [myTenant, setMyTenant] = useState([])
+ 
 
   const onFinishFailed = (errorInfo: any) => {
     console.log('Failed:', errorInfo);
   };
   const [user, setUser] = useState([])
-  const [login, setLogin] = useState(false)
+  // const [login, setLogin] = useState(false)
 
   const api = "http://127.0.0.1:3000" 
  
@@ -29,19 +27,32 @@ const Login: React.FC = () => {
     console.log(username)
     console.log(password)
     setLoading(true)
+    const data = {
+      username:`${username}`,
+      password:`${password}`
+    }
     fetch(`http://127.0.0.1:3000/login`,{
       method: 'POST',
       headers: {
+        'Accept': 'application/json',
         'Content-Type': 'application/json'
       },
-      body: JSON.stringify({username, password}),
-    }).then((r)=>r.json())
-    .then((user)=> setApartment(user.apartments))
-    setLogin(true)
+      body: JSON.stringify(data),
+    }).then((r)=> {
+      if (r.ok){
+        r.json()
+    .then((user)=> setApartment(user.apartments));
+    setLogin(true);
     setLoading(false)
-  
+      }
+       else {
+        alert("invalid username or password")
+        setLoading(false)
+      }
+      })
+  } 
 
-  }
+
   useEffect(()=>{
     fetch(`${api}/me`)
     .then((r)=>{
@@ -55,39 +66,9 @@ const Login: React.FC = () => {
     })
   },[])
   console.log(user)
-  // console.log(tenant)
-
-  
-//   function handleClick(){
-//       fetch(`${api}/tenants`)
-//       .then((r)=>{
-//         if(r.ok){
-//           r.json()
-//           .then((data)=> setTenant(data))
-//           setClick(true)
-
-//         }
-//       })
-    
-
-// }
-// const filterTenant = tenant.filter((tnt)=>{
-//   return tnt.apartment_id === apartment.id
-// })
-// setMyTenant(filterTenant)
-
+ 
   if (login===true) return <Apartments apartment={apartment} />
-  // if (login===true&&click===true) return 
-  //   <Tenant name={myTenant.name} 
-  //   email={myTenant.email} 
-  //   houseNo={myTenant.house_number} 
-  //   key={myTenant.id} 
-  //   phoneNo={myTenant.phone_number}
-  //   noOfBedrooms={myTenant.number_of_bedrooms}
-  //   rent={myTenant.rent}
-  //   status={myTenant.is_paid} />
-  
-
+ 
   const tableStyle={
     padding: "8px", 
     width: "50%",

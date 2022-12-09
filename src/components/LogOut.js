@@ -1,14 +1,16 @@
-import React, {  useState } from "react";
 
-export default function Logout(){
-    const [status, setStatus]= useState("")
+export default function Logout({ login, setLogin }){
 
     function handleClick(){
         fetch('http://127.0.0.1:3000/logout', {method:'DELETE'})
-            .then(()=> setStatus('Successfully Deleted'))
-        console.log(status)
+            .then((r)=> {
+                if (r.ok){
+                setLogin(false)
+            }
+            })
+            
     }
     return(
-        <button onClick={()=>handleClick}>Log Out</button>
+        <button onClick={handleClick}>Log Out</button>
     )
 }

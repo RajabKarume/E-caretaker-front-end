@@ -28,13 +28,29 @@ const AddTenant: React.FC = ( ) => {
 
   function handleSubmit(e){
     e.preventDefault()
+    const input = {
+      name:`${name}`,
+      email:`${email}`,
+      phone_number: parseInt(phoneNo, 10),
+      house_number: parseInt(houseNo, 10),
+      number_of_bedrooms:`${noOfBedroom}`,
+      rent: parseInt(rent, 10),
+      is_paid: !status
+    }
     fetch('http://127.0.0.1:3000/tenants', {method:"POST",
     headers:{
-        'Content-Type':'application/json'
+      'Accept': 'application/json',
+      'Content-Type':'application/json'
     },
-    body: JSON.stringify({name, email,phoneNo, houseNo, noOfBedroom, rent, status}),
-    }).then((r)=>r.json())
+    body: JSON.stringify(input),
+    }).then((r)=>{
+      if (r.ok)
+      r.json()
     .then ((data)=> setAddTenant(data))
+  else {
+    alert("Invalid inputs")
+  }
+  })
     console.log(addTenant)
     
   }
@@ -84,7 +100,7 @@ const AddTenant: React.FC = ( ) => {
                   style={{ width: '100%' }}
                   placeholder="Please enter email"
                   value={email}
-                  type="email"
+                  type="text"
                   onChange={(e)=> setEmail(e.target.value)}
                 />
               </Form.Item>
@@ -135,7 +151,7 @@ const AddTenant: React.FC = ( ) => {
                   style={{ width: '100%' }}
                   placeholder="Please enter rent"
                   value={noOfBedroom}
-                  type="integer"
+                  type="text"
                   onChange={(e)=> setNoOfBedroom(e.target.value)}
 
                 />
@@ -151,7 +167,7 @@ const AddTenant: React.FC = ( ) => {
                   style={{ width: '100%' }}
                   placeholder="Please enter rent"
                   value={rent}
-                  type="integer"
+                  type="number"
                   onChange={(e)=> setRent(e.target.value)}
 
                 />
@@ -169,7 +185,7 @@ const AddTenant: React.FC = ( ) => {
                   style={{ width: '100%' }}
                   placeholder="Please enter rent"
                   value={status}
-                  type="integer"
+                  type="boolean"
                   onChange={(e)=> setStatus(e.target.value)}
 
                 />

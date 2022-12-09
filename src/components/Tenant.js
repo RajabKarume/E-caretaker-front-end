@@ -30,7 +30,7 @@ export default function Tenant({tenant}){
         <div style={{paddingTop:"50px"}} className="table" >
             
             <AddTenant />
-        <table style={tableStyle} class="table table-success table-striped">
+        <table style={tableStyle} className="table table-success table-striped">
             <thead>
                 <tr style={thStyle} >
                     <th>NAME</th>
