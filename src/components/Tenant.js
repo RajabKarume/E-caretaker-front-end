@@ -30,13 +30,13 @@ export default function Tenant({tenant}){
     }
 
 
-    function handleClick(id){
-        fetch(`http://127.0.0.1:3000/tenants/${id}`, {method:'DELETE'})
+    function handleClick(){
+        fetch(`http://127.0.0.1:3000/tenants/`, {method:'DELETE'})
             .then((r)=> r.json())
             .then((result)=> console.log(result))
         }
 
-        
+
     return(
         <div style={{paddingTop:"50px"}} className="table" >
             
