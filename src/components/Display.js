@@ -1,8 +1,7 @@
-import React from "react";
+import React, { useState } from "react";
 
 
 function Display({name, email, phoneNo, houseNo, noOfBedrooms, rent, status, key}){
-
     const tableStyle={
         border: "10px solid #ddd",
         padding: "8px",
@@ -17,6 +16,8 @@ function Display({name, email, phoneNo, houseNo, noOfBedrooms, rent, status, key
         paddingLeft: "2000px",
         fontSize: "25px"
     }
+   
+
     return(
         <div style={{paddingTop:"50px"}} className="table" >
         <table style={tableStyle} class="table table-success table-striped">
@@ -34,6 +35,7 @@ function Display({name, email, phoneNo, houseNo, noOfBedrooms, rent, status, key
             </thead>
             <tbody>
                     <tr style={{fontSize: "25px"}} key={key}>
+                    
                         <td>{name}</td>
                         <td>{email}</td>
                         <td>+{phoneNo}</td>
@@ -41,6 +43,7 @@ function Display({name, email, phoneNo, houseNo, noOfBedrooms, rent, status, key
                         <td>{noOfBedrooms}</td>
                         <td>{rent}</td>
                         <td>{status}</td>
+                        
                     </tr>
             </tbody>
         </table>

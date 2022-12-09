@@ -3,6 +3,8 @@ import AddTenant from "./AddTenant";
 // import Display from "./Display";
 
 export default function Tenant({tenant}){
+    // const [status, setStatus] = useState("")
+
 
     // const[tenant, setTenant] = useState([])
 
@@ -26,6 +28,15 @@ export default function Tenant({tenant}){
         paddingLeft: "2000px",
         fontSize: "25px"
     }
+
+
+    function handleClick(id){
+        fetch(`http://127.0.0.1:3000/tenants/${id}`, {method:'DELETE'})
+            .then((r)=> r.json())
+            .then((result)=> console.log(result))
+        }
+
+        
     return(
         <div style={{paddingTop:"50px"}} className="table" >
             
@@ -33,6 +44,7 @@ export default function Tenant({tenant}){
         <table style={tableStyle} className="table table-success table-striped">
             <thead>
                 <tr style={thStyle} >
+                    <th>DELETE</th>
                     <th>NAME</th>
                     <th>EMAIL</th>
                     <th>PHONE NUMBER</th>
@@ -45,7 +57,9 @@ export default function Tenant({tenant}){
             </thead>
             <tbody>
                 {tenant.map((tnt)=>(
+                    
                     <tr key={tnt.id} style={{fontSize: "25px"}} >
+                        <button onClick={handleClick} >DELETE</button>
                         <td>{tnt.name}</td>
                         <td>{tnt.email}</td>
                         <td>+{tnt.phone_number}</td>
@@ -54,6 +68,8 @@ export default function Tenant({tenant}){
                         <td>{tnt.rent}</td>
                         <td>{tnt.is_paid? "paid" : "not paid"}</td>
                     </tr>
+
+                    
                     ))}
             </tbody>
         </table>

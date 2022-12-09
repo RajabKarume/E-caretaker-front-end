@@ -2,6 +2,32 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+# PROJECT E_CARETAKER
+
+project e_caretaker
+
+created by Rajab Karume on 9th December 2022
+
+# DESCRIPTION
+
+This project allows users especially landlords who own and manage various properties to be able to veiw and manage their properties with ease. When a user is logged in they will veiw all properties that they own. when they click on a property they will be able to see all tenants who live in that apartment.
+
+# DEPLOYMENT SITE
+
+https://e-caretaker-front-end.vercel.app/
+
+# TECHNOLOGIES USED
+
+`React` for the front-end
+`ruby on rails` for the backend
+
+
+# SCREENSHOTS
+Screenshot from 2022-12-09 16-01-53.png
+Screenshot from 2022-12-09 16-05-11.png
+Screenshot from 2022-12-09 16-04-38.png
+
+
 ## Available Scripts
 
 In the project directory, you can run:
@@ -69,3 +95,7 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
 # E-caretaker-front-end
+
+# LICENSE INFORMATION
+
+Copyright (c) 2022, Rajab Karume
